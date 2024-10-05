@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Search from "./Search";
 import BookList from "./BookList";
 import ReadingList from "./ReadingList";
@@ -46,8 +46,8 @@ const App = () => {
     }
   };
 
-  const removeFromReadingList = (bookKey) => {
-    setReadingList(readingList.filter((b) => b.key !== bookKey));
+  const removeFromReadingList = (key) => {
+    setReadingList(readingList.filter((book) => book.key !== key));
   };
 
   useEffect(() => {
@@ -56,34 +56,32 @@ const App = () => {
 
   return (
     <Router>
-      <nav className="sticky-nav">
-        <Link to="/">Home</Link>
-        <Link to="/reading-list">My Reading List ({readingList.length})</Link>
-      </nav>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <h1>Book Haven</h1>
-              <Search fetchBooks={fetchBooks} />
-              <BookList books={books} addToReadingList={addToReadingList} />
-            </>
-          }
-        />
-        <Route
-          path="/reading-list"
-          element={
-            <>
-              <h1>My Reading List</h1>
-              <ReadingList
-                books={readingList}
-                removeFromReadingList={removeFromReadingList}
-              />
-            </>
-          }
-        />
-      </Routes>
+      <div>
+        <Search fetchBooks={fetchBooks} />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <h1>Book Haven</h1>
+                <BookList books={books} addToReadingList={addToReadingList} />
+              </>
+            }
+          />
+          <Route
+            path="/reading-list"
+            element={
+              <>
+                <h2>My Reading List</h2>
+                <ReadingList
+                  books={readingList}
+                  removeFromReadingList={removeFromReadingList}
+                />
+              </>
+            }
+          />
+        </Routes>
+      </div>
     </Router>
   );
 };
