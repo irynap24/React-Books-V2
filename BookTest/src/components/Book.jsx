@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Book = ({ book }) => {
+const Book = ({ book, addToReadingList }) => {
   const title = book.title || "No title available";
   const authors = book.author_name
     ? book.author_name.join(", ")
@@ -25,6 +25,12 @@ const Book = ({ book }) => {
       <p>
         <strong>Author(s):</strong> {authors}
       </p>
+      <button
+        onClick={() => addToReadingList(book)}
+        className="add-to-list-button"
+      >
+        Add to Reading List
+      </button>
       <button onClick={toggleModal} className="read-about-button">
         Read About Me
       </button>

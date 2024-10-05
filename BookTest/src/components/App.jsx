@@ -12,9 +12,14 @@ const App = () => {
         `https://openlibrary.org/search.json?q=${searchQuery}`
       );
       const data = await response.json();
-      setBooks(data.docs || []);
+      if (data.docs && data.docs.length > 0) {
+        setBooks(data.docs);
+      } else {
+        setBooks([]);
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
+      setBooks([]);
     }
   };
 
@@ -33,7 +38,9 @@ const App = () => {
 
   const addToReadingList = (book) => {
     if (!readingList.some((b) => b.key === book.key)) {
-      setReadingList([...readingList, book]);
+      setReadingList([...readingList, book]); // Update reading list
+    } else {
+      alert("This book is already in your reading list!");
     }
   };
 
