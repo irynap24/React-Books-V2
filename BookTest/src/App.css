@@ -132,7 +132,20 @@ p {
   position: sticky; /* Make it sticky */
   top: 0; /* Stick to the top */
   z-index: 1000; /* Ensure it stays above other elements */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for visibility */
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center items */
+}
+
+.sticky-nav a {
+  color: white; /* Link color */
+  margin: 0 20px; /* Space between links */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold; /* Make text bold */
+}
+
+.sticky-nav a:hover {
+  text-decoration: underline; /* Underline on hover */
 }
 
 .sticky-nav form {
