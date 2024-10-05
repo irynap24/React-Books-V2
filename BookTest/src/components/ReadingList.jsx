@@ -1,5 +1,5 @@
 import React from "react";
-import Book from "./Book"; // Reuse the Book component
+import Book from "./Book";
 
 const ReadingList = ({ books, removeFromReadingList }) => {
   return (
@@ -7,7 +7,6 @@ const ReadingList = ({ books, removeFromReadingList }) => {
       {books.length > 0 ? (
         books.map((book) => (
           <div key={book.key} className="book-card">
-            {/* Only passing the removeFromReadingList prop */}
             <Book book={book} removeFromReadingList={removeFromReadingList} />
           </div>
         ))

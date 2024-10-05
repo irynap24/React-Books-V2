@@ -18,6 +18,11 @@ const Book = ({ book, addToReadingList, removeFromReadingList }) => {
     setIsModalOpen(!isModalOpen);
   };
 
+  const handleAddToReadingList = () => {
+    addToReadingList(book); // Call the function passed as prop
+    alert("Book added to your reading list!");
+  };
+
   return (
     <div className="book-card">
       {thumbnail && <img src={thumbnail} alt={title} className="book-cover" />}
@@ -26,12 +31,8 @@ const Book = ({ book, addToReadingList, removeFromReadingList }) => {
         <strong>Author(s):</strong> {authors}
       </p>
 
-      {/* Conditionally render buttons based on whether it's a reading list or not */}
-      {addToReadingList && !removeFromReadingList && (
-        <button
-          onClick={() => addToReadingList(book)}
-          className="add-to-list-button"
-        >
+      {addToReadingList && (
+        <button onClick={handleAddToReadingList} className="add-to-list-button">
           Add to Reading List
         </button>
       )}

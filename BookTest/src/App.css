@@ -47,10 +47,7 @@ button {
 
 .book-list {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(200px, 1fr)
-  ); /* Responsive grid */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 15px;
   margin-top: 20px;
 }
@@ -97,16 +94,16 @@ button {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.7); /* Black with transparency */
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .modal-content {
-  background-color: #fff; /* White background for modal */
+  background-color: #fff;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Modal width */
-  max-width: 600px; /* Maximum width */
+  width: 80%;
+  max-width: 600px;
 }
 
 .close {
@@ -126,32 +123,43 @@ button {
 p {
   margin: 5px 0;
 }
+
 .sticky-nav {
-  background-color: #1b263b; /* Background color */
-  padding: 10px; /* Padding */
-  position: sticky; /* Make it sticky */
-  top: 0; /* Stick to the top */
-  z-index: 1000; /* Ensure it stays above other elements */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for visibility */
-  display: flex; /* Use flexbox for layout */
-  justify-content: center; /* Center items */
+  background-color: #1b263b;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sticky-nav .nav-links {
+  text-decoration: none;
+  display: flex;
+  gap: 20px;
 }
 
 .sticky-nav a {
-  color: white; /* Link color */
-  margin: 0 20px; /* Space between links */
-  text-decoration: none; /* Remove underline */
-  font-weight: bold; /* Make text bold */
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 15px;
+  background-color: #415a77;
+  border-radius: 4px;
+  transition: background-color 0.3s;
 }
 
 .sticky-nav a:hover {
-  text-decoration: underline; /* Underline on hover */
+  background-color: #0d1b2a;
+  text-decoration: none;
 }
 
 .sticky-nav form {
   display: flex;
-  justify-content: center; /* Center the search bar */
-  align-items: center; /* Center vertically */
+  align-items: center;
 }
 
 .sticky-nav input {
@@ -167,26 +175,14 @@ p {
   padding: 10px 15px;
   border: none;
   border-radius: 4px;
-  background-color: #415a77;
+  background-color: #434660;
   color: white;
   cursor: pointer;
-}
-.book-card {
-  background-color: #415a7785;
-  border: 1px solid #0d1b2a;
-  padding: 15px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
+  transition: background-color 0.3s;
 }
 
-.book-card:hover {
-  transform: scale(1.02);
-}
-
-.book-cover {
-  max-width: 100px;
-  margin-top: 10px;
+.sticky-nav button:hover {
+  background-color: #262630;
 }
 
 .modal {
