@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Book = ({ book, addToReadingList }) => {
+const Book = ({ book, addToReadingList, removeFromReadingList }) => {
   const title = book.title || "No title available";
   const authors = book.author_name
     ? book.author_name.join(", ")
@@ -25,12 +25,25 @@ const Book = ({ book, addToReadingList }) => {
       <p>
         <strong>Author(s):</strong> {authors}
       </p>
-      <button
-        onClick={() => addToReadingList(book)}
-        className="add-to-list-button"
-      >
-        Add to Reading List
-      </button>
+
+      {/* Conditionally render buttons based on presence of add/remove functions */}
+      {addToReadingList && (
+        <button
+          onClick={() => addToReadingList(book)}
+          className="add-to-list-button"
+        >
+          Add to Reading List
+        </button>
+      )}
+      {removeFromReadingList && (
+        <button
+          onClick={() => removeFromReadingList(book.key)}
+          className="remove-button"
+        >
+          Remove from My List
+        </button>
+      )}
+
       <button onClick={toggleModal} className="read-about-button">
         Read About Me
       </button>
