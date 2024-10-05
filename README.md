@@ -1,3 +1,5 @@
+Important to note - the API takes a little while to load, please give it time :)
+
 Book Haven
 A simple React web application that allows users to search for books from the Open Library API, view details about them, and add/remove books from a personal reading list.
 
