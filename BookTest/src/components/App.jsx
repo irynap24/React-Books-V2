@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import Search from "./Search";
 import BookList from "./BookList";
+import ReadingList from "./ReadingList";
 
 const App = () => {
   const [books, setBooks] = useState([]);
@@ -38,10 +40,14 @@ const App = () => {
 
   const addToReadingList = (book) => {
     if (!readingList.some((b) => b.key === book.key)) {
-      setReadingList([...readingList, book]); // Update reading list
+      setReadingList([...readingList, book]);
     } else {
       alert("This book is already in your reading list!");
     }
+  };
+
+  const removeFromReadingList = (bookKey) => {
+    setReadingList(readingList.filter((b) => b.key !== bookKey));
   };
 
   useEffect(() => {
@@ -49,13 +55,36 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Book Haven</h1>
-      <Search fetchBooks={fetchBooks} />
-      <BookList books={books} addToReadingList={addToReadingList} />
-      <h2>My Reading List</h2>
-      <BookList books={readingList} />
-    </div>
+    <Router>
+      <nav className="sticky-nav">
+        <Link to="/">Home</Link>
+        <Link to="/reading-list">My Reading List ({readingList.length})</Link>
+      </nav>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <h1>Book Haven</h1>
+              <Search fetchBooks={fetchBooks} />
+              <BookList books={books} addToReadingList={addToReadingList} />
+            </>
+          }
+        />
+        <Route
+          path="/reading-list"
+          element={
+            <>
+              <h1>My Reading List</h1>
+              <ReadingList
+                books={readingList}
+                removeFromReadingList={removeFromReadingList}
+              />
+            </>
+          }
+        />
+      </Routes>
+    </Router>
   );
 };
 
