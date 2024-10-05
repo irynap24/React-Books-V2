@@ -26,8 +26,8 @@ const Book = ({ book, addToReadingList, removeFromReadingList }) => {
         <strong>Author(s):</strong> {authors}
       </p>
 
-      {/* Conditionally render buttons based on presence of add/remove functions */}
-      {addToReadingList && (
+      {/* Conditionally render buttons based on whether it's a reading list or not */}
+      {addToReadingList && !removeFromReadingList && (
         <button
           onClick={() => addToReadingList(book)}
           className="add-to-list-button"

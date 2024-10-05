@@ -7,13 +7,8 @@ const ReadingList = ({ books, removeFromReadingList }) => {
       {books.length > 0 ? (
         books.map((book) => (
           <div key={book.key} className="book-card">
-            <Book book={book} addToReadingList={removeFromReadingList} />
-            <button
-              onClick={() => removeFromReadingList(book.key)}
-              className="remove-button"
-            >
-              Remove from My List
-            </button>
+            {/* Only passing the removeFromReadingList prop */}
+            <Book book={book} removeFromReadingList={removeFromReadingList} />
           </div>
         ))
       ) : (
