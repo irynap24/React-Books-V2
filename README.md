@@ -1,8 +1,4 @@
-Render
-https://react-books-v2.onrender.com/
 
-Netlify
-https://reactbooknook.netlify.app/
 
 
 Important to note - the API takes a little while to load, please give it time :)
